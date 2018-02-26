@@ -1,3 +1,4 @@
+// Sample data to be used before we connect to the API
 export default {
   city: "Toronto",
 
