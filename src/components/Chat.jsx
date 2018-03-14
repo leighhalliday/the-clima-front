@@ -16,7 +16,7 @@ import {
 } from "../elements/chat";
 
 import chatImage from "../images/chat.png";
-import database from "../firebase";
+// import database from "../firebase";
 
 /* props:
 - city (string)
