@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NavBar = styled.nav`
   position: absolute;
@@ -9,7 +10,7 @@ const NavBar = styled.nav`
   background-color: #000;
 `;
 
-const HomeLink = styled.a`
+const HomeLink = styled(Link)`
   font-size: 2rem;
   text-decoration: none;
   color: #ffff00;

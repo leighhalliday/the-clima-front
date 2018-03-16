@@ -14,4 +14,34 @@ import {
 
 import logo from "../images/theclima.svg";
 
-export default () => "Home";
+export default class Home extends React.Component {
+  state = {
+    inputValue: ""
+  };
+
+  render() {
+    return (
+      <Container>
+        <Logo src={logo} />
+
+        <Form>
+          <Label>Search for city</Label>
+          <PlacesAutocomplete
+            inputProps={{
+              value: this.state.inputValue,
+              onChange: inputValue => {
+                this.setState({
+                  inputValue
+                });
+              }
+            }}
+            styles={autoComplete}
+            onSelect={selectedValue => {
+              this.props.history.push(`/${selectedValue}`);
+            }}
+          />
+        </Form>
+      </Container>
+    );
+  }
+}

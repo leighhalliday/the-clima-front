@@ -21,7 +21,7 @@ export default class Nav extends React.Component {
   render() {
     return (
       <NavBar>
-        <HomeLink href="#">
+        <HomeLink to="/">
           <HomeImage src={homeImage} />
         </HomeLink>
         <CityName>{this.props.city}</CityName>
