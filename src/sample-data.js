@@ -3,10 +3,13 @@ export default {
   city: "Toronto",
 
   current: {
-    date: new Date().toString(),
+    date: new Date().toISOString(),
     temp: -2,
     weather: "Sunny"
   },
+
+  image_url:
+    "https://images.unsplash.com/photo-1512399594555-29c2ec569c53?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ac1b865093886012d54618b84e9b4f29&auto=format&fit=crop&w=2848&q=80",
 
   forecast: [
     {
