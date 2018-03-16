@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+
 import { Motion, spring } from "react-motion";
 
 import Nav from "../components/Nav";
@@ -83,11 +84,19 @@ export default class City extends React.Component {
         <Today date={this.state.weather.current.date} />
 
         <Motion
-          defaultStyle={{ x: -200 }}
-          style={{ x: spring(this.state.showForecast ? 0 : -200) }}
+          defaultStyle={{ x: -200, opacity: 0 }}
+          style={{
+            x: spring(this.state.showForecast ? 0 : -200),
+            opacity: spring(this.state.showForecast ? 1 : 0)
+          }}
         >
           {style => (
-            <Forecast style={{ transform: `translateX(${style.x}px)` }}>
+            <Forecast
+              style={{
+                transform: `translateX(${style.x}px)`,
+                opacity: style.opacity
+              }}
+            >
               {this.state.weather.forecast.map(daily => (
                 <Daily
                   key={daily.date}
