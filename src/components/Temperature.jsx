@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  CurrentBox, // wraps the content inside the Current component
+  TemperatureBox, // wraps the content inside the Temperature component
   LargeText, // The top larger text inside this box
   SmallText // The bottom smaller text inside this box
 } from "../elements/box";
@@ -11,4 +11,4 @@ import {
 - city (string)
 */
 
-export default () => "Current";
+export default () => "Temperature";

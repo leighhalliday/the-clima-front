@@ -32,7 +32,7 @@ const Box = styled.div`
   }
 `;
 
-const CurrentBox = styled(Box)`
+const TemperatureBox = styled(Box)`
   bottom: calc(50px + ${defaultWidth});
   right: 25px;
   cursor: pointer;
@@ -106,4 +106,4 @@ const SmallText = styled.span`
 `;
 SmallText.displayName = "SmallText";
 
-export { CurrentBox, TimeBox, TodayBox, LargeText, SmallText };
+export { TemperatureBox, TimeBox, TodayBox, LargeText, SmallText };

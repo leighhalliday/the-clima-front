@@ -3,7 +3,7 @@ import React from "react";
 import data from "../sample-data";
 
 import Nav from "../components/Nav";
-// import Current from "../components/Current";
+// import Temperature from "../components/Temperature";
 // import Time from "../components/Time";
 // import Today from "../components/Today";
 // import Daily from "../components/Daily";
