@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Motion, spring } from "react-motion";
 
 import Nav from "../components/Nav";
 import Temperature from "../components/Temperature";
@@ -19,7 +20,8 @@ export default class City extends React.Component {
   state = {
     time: new Date().toISOString(),
     weather: null,
-    error: false
+    error: false,
+    showForecast: false
   };
 
   componentDidMount() {
@@ -71,20 +73,32 @@ export default class City extends React.Component {
         <Temperature
           temp={this.state.weather.current.temp}
           city={this.state.weather.city}
+          toggleForecast={() => {
+            this.setState({
+              showForecast: !this.state.showForecast
+            });
+          }}
         />
         <Time time={this.state.time} />
         <Today date={this.state.weather.current.date} />
 
-        <Forecast>
-          {this.state.weather.forecast.map(daily => (
-            <Daily
-              key={daily.date}
-              date={daily.date}
-              low={daily.low}
-              high={daily.high}
-            />
-          ))}
-        </Forecast>
+        <Motion
+          defaultStyle={{ x: -200 }}
+          style={{ x: spring(this.state.showForecast ? 0 : -200) }}
+        >
+          {style => (
+            <Forecast style={{ transform: `translateX(${style.x}px)` }}>
+              {this.state.weather.forecast.map(daily => (
+                <Daily
+                  key={daily.date}
+                  date={daily.date}
+                  low={daily.low}
+                  high={daily.high}
+                />
+              ))}
+            </Forecast>
+          )}
+        </Motion>
       </CityContainer>
     );
   }
