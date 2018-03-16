@@ -8,7 +8,7 @@ import {
   Small // The low of this day
 } from "../elements/daily";
 
-/* 
+/*
 props:
 - date (string)
 - low (number)
@@ -18,4 +18,23 @@ format:
 - ddd
 */
 
-export default () => "Daily";
+export default class Daily extends React.Component {
+  static propTypes = {
+    date: PropTypes.string.isRequired,
+    low: PropTypes.number.isRequired,
+    high: PropTypes.number.isRequired
+  };
+
+  render() {
+    return (
+      <DailyBox>
+        <Day>{moment(this.props.date).format("ddd")}</Day>
+        <HighLow>
+          <Small>↓</Small>
+          {this.props.low} <Small>↑</Small>
+          {this.props.high}
+        </HighLow>
+      </DailyBox>
+    );
+  }
+}

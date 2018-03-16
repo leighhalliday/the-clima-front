@@ -13,4 +13,19 @@ props:
 - city (string)
 */
 
-export default () => "Nav";
+export default class Nav extends React.Component {
+  static propTypes = {
+    city: PropTypes.string.isRequired
+  };
+
+  render() {
+    return (
+      <NavBar>
+        <HomeLink href="#">
+          <HomeImage src={homeImage} />
+        </HomeLink>
+        <CityName>{this.props.city}</CityName>
+      </NavBar>
+    );
+  }
+}

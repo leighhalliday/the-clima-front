@@ -16,4 +16,17 @@ formats:
 - "MMMM, YYYY" (month and year)
 */
 
-export default () => "Today";
+export default class Today extends React.Component {
+  static propTypes = {
+    date: PropTypes.string.isRequired
+  };
+
+  render() {
+    return (
+      <TodayBox>
+        <LargeText>{moment(this.props.date).format("Do")}</LargeText>
+        <SmallText>{moment(this.props.date).format("MMMM, YYYY")}</SmallText>
+      </TodayBox>
+    );
+  }
+}

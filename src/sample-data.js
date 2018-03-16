@@ -1,12 +1,15 @@
 // Sample data to be used before we connect to the API
 export default {
-  city: "Toronto",
+  city: "Mississauga",
 
   current: {
-    date: new Date().toString(),
-    temp: -2,
+    date: new Date().toISOString(),
+    temp: 5,
     weather: "Sunny"
   },
+
+  image_url:
+    "https://images.unsplash.com/photo-1512399594555-29c2ec569c53?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ac1b865093886012d54618b84e9b4f29&auto=format&fit=crop&w=2848&q=80",
 
   forecast: [
     {

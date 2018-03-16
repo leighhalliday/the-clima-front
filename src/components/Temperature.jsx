@@ -11,4 +11,18 @@ import {
 - city (string)
 */
 
-export default () => "Temperature";
+export default class Temperature extends React.Component {
+  static propTypes = {
+    temp: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired
+  };
+
+  render() {
+    return (
+      <TemperatureBox>
+        <LargeText>{this.props.temp}&deg;c</LargeText>
+        <SmallText>{this.props.city}</SmallText>
+      </TemperatureBox>
+    );
+  }
+}

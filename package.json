@@ -17,7 +17,7 @@
     "react-places-autocomplete": "^6.0.2",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
-    "styled-components": "^2.4.0"
+    "styled-components": "^3.2.3"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",

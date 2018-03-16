@@ -16,4 +16,17 @@ formats:
 - "a" (am or pm)
 */
 
-export default () => "Time";
+export default class Time extends React.Component {
+  static propTypes = {
+    time: PropTypes.string.isRequired
+  };
+
+  render() {
+    return (
+      <TimeBox>
+        <LargeText>{moment(this.props.time).format("h:mm")}</LargeText>
+        <SmallText>{moment(this.props.time).format("a")}</SmallText>
+      </TimeBox>
+    );
+  }
+}
