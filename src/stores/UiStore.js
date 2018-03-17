@@ -4,7 +4,10 @@ class UiStore {
   @observable showForecast = false;
   @observable showChat = false;
 
-  @action toggleForecast = () => {};
+  @action
+  toggleForecast = () => {
+    this.showForecast = !this.showForecast;
+  };
   @action toggleChat = () => {};
 }
 

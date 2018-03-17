@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import { inject, observer } from "mobx-react";
 import { Motion, spring } from "react-motion";
 
 import Nav from "../components/Nav";
@@ -17,77 +17,53 @@ import {
   Forecast // Wrapper for when showing the Daily components
 } from "../elements/city";
 
+@inject("UiStore", "WeatherStore")
+@observer
 export default class City extends React.Component {
-  state = {
-    time: new Date().toISOString(),
-    weather: null,
-    error: false,
-    showForecast: false
-  };
-
   componentDidMount() {
-    this.loadWeatherData();
+    this.props.WeatherStore.loadWeather(this.props.match.params.city);
 
     setInterval(() => {
-      this.setState({
-        time: new Date().toISOString()
-      });
+      this.props.WeatherStore.tick();
     }, 1000);
   }
 
-  loadWeatherData = async () => {
-    try {
-      const response = await axios.get(
-        "https://abnormal-weather-api.herokuapp.com/cities/search",
-        {
-          params: { city: this.props.match.params.city }
-        }
-      );
-
-      this.setState({
-        weather: response.data
-      });
-    } catch (error) {
-      this.setState({
-        error: true
-      });
-    }
-  };
-
   render() {
-    if (this.state.error) {
+    const { WeatherStore, UiStore } = this.props;
+
+    if (WeatherStore.loadWeatherError) {
       return <Loading>Sorry... very embarassing</Loading>;
     }
 
-    if (!this.state.weather) {
+    if (!WeatherStore.weather) {
       return <Loading>Loading...</Loading>;
     }
 
     return (
       <CityContainer>
         <CityBackground
-          style={{ backgroundImage: `url('${this.state.weather.image_url}')` }}
-        />
-
-        <Nav city={this.state.weather.city} />
-
-        <Temperature
-          temp={this.state.weather.current.temp}
-          city={this.state.weather.city}
-          toggleForecast={() => {
-            this.setState({
-              showForecast: !this.state.showForecast
-            });
+          style={{
+            backgroundImage: `url('${WeatherStore.weather.image_url}')`
           }}
         />
-        <Time time={this.state.time} />
-        <Today date={this.state.weather.current.date} />
+
+        <Nav city={WeatherStore.weather.city} />
+
+        <Temperature
+          temp={WeatherStore.weather.current.temp}
+          city={WeatherStore.weather.city}
+          toggleForecast={() => {
+            UiStore.toggleForecast();
+          }}
+        />
+        <Time time={WeatherStore.time} />
+        <Today date={WeatherStore.weather.current.date} />
 
         <Motion
           defaultStyle={{ x: -200, opacity: 0 }}
           style={{
-            x: spring(this.state.showForecast ? 0 : -200),
-            opacity: spring(this.state.showForecast ? 1 : 0)
+            x: spring(UiStore.showForecast ? 0 : -200),
+            opacity: spring(UiStore.showForecast ? 1 : 0)
           }}
         >
           {style => (
@@ -97,7 +73,7 @@ export default class City extends React.Component {
                 opacity: style.opacity
               }}
             >
-              {this.state.weather.forecast.map(daily => (
+              {WeatherStore.weather.forecast.map(daily => (
                 <Daily
                   key={daily.date}
                   date={daily.date}
