@@ -10,5 +10,3 @@ it("toggles forecast flag", () => {
   // expect
   expect(UiStore.showForecast).toBe(true);
 });
-
-it("toggles chat flag", () => {});
