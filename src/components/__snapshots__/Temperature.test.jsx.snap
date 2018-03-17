@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component 1`] = `
+<div
+  class="sc-bwzfXH ilYHYa sc-bdVaJa dQdFv"
+>
+  <span
+    class="sc-ifAKCX XBTtJ"
+  >
+    10°c
+  </span>
+  <span
+    class="sc-EHOje exztiK"
+  >
+    Toronto
+  </span>
+</div>
+`;
