@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase";
 
 // configure the firebase app
-const app = firebase.initializeApp({
+const app = initializeApp({
   apiKey: "AIzaSyCvBuiA7eSnkZkU7wSTgG77rgwSgR92MVY",
   databaseURL: "https://abnormal-weather.firebaseio.com",
   projectId: "abnormal-weather"
