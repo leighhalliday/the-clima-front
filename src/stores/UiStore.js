@@ -8,7 +8,11 @@ class UiStore {
   toggleForecast = () => {
     this.showForecast = !this.showForecast;
   };
-  @action toggleChat = () => {};
+
+  @action
+  toggleChat = () => {
+    this.showChat = !this.showChat;
+  };
 }
 
 export default new UiStore();
